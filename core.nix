@@ -20,7 +20,7 @@
   boot = {
     # Set kernel version and load kernel modules
     # TODO: Move to module file
-    kernelPackages = pkgs.linuxPackages_3_17;
+    kernelPackages = pkgs.linuxPackages_3_16;
   };
 
   # Configure networking
