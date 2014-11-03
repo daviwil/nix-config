@@ -17,4 +17,8 @@
     # Configure drivers
     videoDrivers = ["nouveau" "intel"];
   };
+
+  environment.systemPackages = with pkgs; [
+    linuxPackages_3_16.nvidiabl
+  ];
 }

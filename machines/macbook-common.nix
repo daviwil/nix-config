@@ -44,6 +44,6 @@
   };
 
   # Enable pommed to deal with MacBook hotkeys
-  # TODO Why does this fail?
+  # NOTE: Looks like the download location of this package is incorrect...
   #services.hardware.pommed.enable = true;
 }

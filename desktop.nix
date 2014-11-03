@@ -6,6 +6,9 @@
       ./core.nix
     ];
 
+  # Add sound kernel modules
+  boot.kernelModules = [ "snd-seq" "snd-rawmidi" ];
+    
   # CUPS
   # TODO: Move to a module
   services.printing.enable = true;
@@ -20,9 +23,10 @@
 
     # Enable PulseAudio with JACK integration
     # TODO: Follow these instructions - https://nixos.org/wiki/Audio_HOWTO
-    #pulseaudio = {
-    #  enable = true;
-    #};
+    pulseaudio = {
+      enable = true;
+      #package = pkgs.pulseaudio.override { jackaudioSupport = true; };
+    };
   };
 
   # Configure X11
@@ -78,6 +82,8 @@
     ardour
     supercollider
     ncmpcpp
+    qjackctl
+    pavucontrol
 
     # Games
     steam
@@ -94,7 +100,9 @@
 
     # Video
     #makemkv # NOTE: Didn't build...
-    #cinelerra # TODO: Try this!
+    #cinelerra # NOTE: Package points to outdate Git repo url, doesn't build
+    mpv
+    handbrake
 
     # Desktop Tools
     dmenu
@@ -103,12 +111,12 @@
     xfce.xfce4terminal
     spideroak
     #smbclient # Not found, find correct package
-    powertop
-    #blueman # NOTE: Didn't build...
+    blueman 
     scrot
     p7zip
     gnupg
     filezilla
+    fbpanel
 
     # Haskell packages
     (haskellPackages.ghcWithPackages (self : [
